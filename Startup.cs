@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using pagination.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace pagination
 {
@@ -24,6 +26,10 @@ namespace pagination
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            // add db context
+            services.AddDbContext<MyContext>(options=>{
+            options.UseSqlServer(Configuration.GetConnectionString("myPaginationDbConnection"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
