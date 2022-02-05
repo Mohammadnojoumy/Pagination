@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using pagination.Models;
 
 namespace pagination.Controllers
-{
+{   
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
