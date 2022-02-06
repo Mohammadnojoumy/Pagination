@@ -16,13 +16,12 @@ namespace pagination.Controllers
 
         public async Task<IActionResult> Index(int pageNumber = 1)
         {
-if(pageNumber<1) return NotFound();
-var users=  _context.users;
-var pagination=await PaginationList<User>.CreateAsync(users,pageNumber,3);
-return View(pagination);
+            if (pageNumber < 1) return NotFound();
+            var users = _context.users;
+            var pagination = await PaginationList<User>.CreateAsync(users, pageNumber, 3);
+            return View(pagination);
         }
+        
     }
-
-
-
+ 
 }

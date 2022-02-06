@@ -1,0 +1,25 @@
+@model PaginationList<User>
+<h4>User Lists:</h4>
+<div id="template">
+@foreach (var item in Model)
+{
+    <ul>
+        <li>@item.Name</li>
+        <li>@item.Family</li>
+        <li>@item.Age</li>
+        <li>@item.CreateDate</li>
+    </ul>
+}
+</div>
+@{
+    var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.NextPage ? "disabled" : "";
+}
+<a    class=" btn btn-outline-info @prevDisabled" asp-action="Index"
+asp-route-pageNumber=@(Model.PageIndex-1)
+><</a>
+ 
+ 
+<a     class="btn btn-outline-info @nextDisabled"  asp-action="Index" asp-route-pageNumber=@(Model.PageIndex+1) >></a>
+ 
+ 
